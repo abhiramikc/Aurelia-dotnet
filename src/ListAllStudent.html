@@ -1,0 +1,21 @@
+﻿<template>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>StidenID</th>
+        <th>Name</th>
+        <th>Department</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr repeat.for="std of studentData">
+
+        <td>${std.stuId}</td>
+        <td>${std.name}</td>
+        <td>${std.department}</td>
+        <td><button type="submit" class="btn btn-danger" click.delegate="DeleteStudent(std)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</template>
