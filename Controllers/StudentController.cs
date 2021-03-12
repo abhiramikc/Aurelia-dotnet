@@ -31,7 +31,7 @@ namespace project.Controllers
         Name=s.Name,
         Department=s.Department
       });
-      return new OkObjectResult(model);
+      return new JsonResult(model);
 
       
     }
@@ -41,6 +41,7 @@ namespace project.Controllers
     public ActionResult AddStudent([FromBody] StudentModel student)
     {
       studentrepository.AddStudent(student);
+      return Ok();
     }
     [HttpDelete("DeleteStu")]
     public ActionResult DeleteStu([FromBody] StudentModel student)

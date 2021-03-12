@@ -26,5 +26,15 @@ export class ListAllStudent {
       .then(data => {
         console.log(data);
       });
+    alert("Deleted");
+    this.getAll();
+  }
+
+  getAll() {
+    this.httpClient.fetch('https://localhost:44330/api/student/All').then(response => response.json()).then(data => {
+      this.studentData = data;
+      console.log(data);
+
+    });
   }
 }

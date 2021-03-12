@@ -10,7 +10,7 @@ namespace project.src.Interface
   public interface IStudent
   {
     IEnumerable<StudentModel> GetStudents();
-    string AddStudent(StudentModel student);
+    void AddStudent(StudentModel student);
     void DeleteStudent(StudentModel student);
     void UpdateStudent(StudentModel student);
   }

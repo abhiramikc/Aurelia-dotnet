@@ -34,8 +34,30 @@ export class App {
         moduleId: PLATFORM.moduleName('./ListAllStudent'),
         nav: true,
         title: 'ListAllStudent'
-      }
+      },
       
+
+      {
+        route: 'ListAllApi',
+        name: 'ListAllApi',
+        moduleId: PLATFORM.moduleName('./ListAllApi'),
+        nav: true,
+        title: 'ListAllApi'
+      },
+      {
+        route: 'StudentlistApi',
+        name: 'StudentlistApi',
+        moduleId: PLATFORM.moduleName('./StudentlistApi'),
+        nav: true,
+        title: 'StudentlistApi'
+      },
+      {
+        route: 'Listapi2',
+        name: 'Listapi2',
+        moduleId: PLATFORM.moduleName('./Listapi2'),
+        nav: true,
+        title: 'Listapi2'
+      }
 
       //{
       //  route: 'users',

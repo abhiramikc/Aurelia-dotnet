@@ -19,15 +19,19 @@ export class Studentlist {
   }
 
   submit() {
-
     var myuser = { stuid: this.sid, name: this.name, department:this.selectedBox }
     console.log(myuser);
     this.httpClient.fetch('https://localhost:44330/api/student/AddStudent', {
       method: "POST",
       body: JSON.stringify(myuser)
     })
-      .then(response => response.json()).then(data => { console.log(data) });
+      .then(response => response.json()).then(data => {
+        alert(`saved`);
+        console.log("saved data",data)
+      });
     console.log("submitting");
+    alert(`saved`);
+
   }
 
 
@@ -51,8 +55,10 @@ export class Studentlist {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
+        console.log("updare", data);
+        alert("Succesfully updated");
       });
+    alert("Succesfully updated");
   }
 
 }
