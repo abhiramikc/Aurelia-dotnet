@@ -37,26 +37,20 @@ export class ListAllApi {
   //  this.getAll();
   //}
   DeleteStudent(std: any) {
-    debugger;
     var myuser = { stuid: std.stuId, name: std.name, department: std.department }
     console.log("deletedata", myuser);
-    this.studentapi.destroy('DeleteStu', {
-      method: "DELETE",
-      body: JSON.stringify(myuser)
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      });
+    this.studentapi.post('DeleteStu', std)
+      .then(response => {
+        alert("deleted.")
+        this.getAll();
+      })
 
   }
 
   getAll() {
-    debugger;
     this.studentapi.find('All').then(response => {
       console.log("responsee get", response);
       this.studentData = response;
-      // alert(this.studentData[0].stuId);//
     })
   }
 }

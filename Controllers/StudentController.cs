@@ -6,6 +6,7 @@ using project.src.Interface;
 using project.src.Repository;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -40,16 +41,18 @@ namespace project.Controllers
     [HttpPost("AddStudent")]
     public ActionResult AddStudent([FromBody] StudentModel student)
     {
-      studentrepository.AddStudent(student);
-      return Ok();
+     // return JsonConverter.SerializeObject(studentrepository.AddStudent(student));
+      var x=studentrepository.AddStudent(student);
+      return new JsonResult(x);
+     // return Ok();
     }
-    [HttpDelete("DeleteStu")]
+    [HttpPost("DeleteStu")]
     public ActionResult DeleteStu([FromBody] StudentModel student)
     {
       studentrepository.DeleteStudent(student);
       return Ok();
     }
-    [HttpPut("UpdateStu")]
+    [HttpPost("UpdateStu")]
     public ActionResult UpdateStu([FromBody] StudentModel student)
     {
       studentrepository.UpdateStudent(student);

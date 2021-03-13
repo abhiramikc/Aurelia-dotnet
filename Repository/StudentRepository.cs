@@ -15,6 +15,9 @@ namespace project.src.Repository
   public class StudentRepository : IStudent
   {
     private IConfiguration _configuration { get; set; }
+
+
+
     //private List<StudentModel> allstudents;
     IEnumerable<StudentModel> allstudents2;
 
@@ -45,21 +48,21 @@ namespace project.src.Repository
       return allstudents2;
     }
 
-    public void AddStudent(StudentModel student)
-    {
-      //throw new NotImplementedException();
-      using (var dbConnection=Connection)
-      {
-        string sQuery = "INSERT INTO Student (StuId,Name,Department) Values(@StuId,@Name,@Department)";
-        dbConnection.Open();
-        dbConnection.Execute(sQuery,new { 
-         StuId=student.StuId,
-         Name=student.Name,
-         Department=student.Department
-        });
-        dbConnection.Close();
-      }
-    }
+    //public void AddStudent(StudentModel student)
+    //{
+    //  //throw new NotImplementedException();
+    //  using (var dbConnection=Connection)
+    //  {
+    //    string sQuery = "INSERT INTO Student (StuId,Name,Department) Values(@StuId,@Name,@Department)";
+    //    dbConnection.Open();
+    //    dbConnection.Execute(sQuery,new { 
+    //     StuId=student.StuId,
+    //     Name=student.Name,
+    //     Department=student.Department
+    //    });
+    //    dbConnection.Close();
+    //  }
+    //}
 
     public void DeleteStudent(StudentModel student)
     {
@@ -90,5 +93,34 @@ namespace project.src.Repository
         dbConnection.Close();
       }
     }
+
+    string IStudent.AddStudent(StudentModel student)
+    {
+      string msg = null;
+      try {
+        using (var dbConnection = Connection)
+        {
+          string sQuery = "INSERT INTO Student (StuId,Name,Department) Values(@StuId,@Name,@Department)";
+          dbConnection.Open();
+          dbConnection.Execute(sQuery, new {
+            StuId = student.StuId,
+            Name = student.Name,
+            Department = student.Department
+          });
+
+          dbConnection.Close();
+          msg = "success";
+
+          return msg;
+        }
+      }
+      catch(Exception e)
+      {
+        msg = "fail";
+      }
+      return msg;
+    }
+      
+
   }
 }

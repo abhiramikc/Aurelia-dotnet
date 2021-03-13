@@ -1,0 +1,67 @@
+﻿<template>
+  <section class="au-animate">
+    <form role="form" name="from1" submit.delegate="submit()">
+      <div class="form-group">
+        <label for="sid">StudentId</label>
+        <input type="number" class="form-control" value.bind="sid" id="sid" name="sid" value="id1" placeholder="id">
+        <span class="errorclass" id="err1"></span>
+      </div>
+      <!-- <div if.bind="sid">
+        Hello, World!
+      </div> -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" value.bind="name" id="name" placeholder="name">
+        <span  class="errorclass" id="err2"></span>
+      </div>
+      <div class="form-group">
+        <label>
+          Selecte Department:<br>
+          <select class="form-select" id="dropdown-box" value.bind="selectedBox">
+            <option value="">choose..</option>
+            <option repeat.for="val of department">
+              ${val}
+            </option>
+          </select>
+          <span  class="errorclass" id="err3"></span>
+        </label>
+      </div>
+      <!--<div class="c-favorite-txtBox-block txtBox--favorite n-txtbx">
+        <input type="text" name="favoritename" class="form-username inputText" id="fav-user"  placeholder="Name" required maxlength="60">
+        <span class="floating-label">Favourite Name</span>
+        <span class="border-animated"></span>
+      </div>-->
+      <div if.bind="!isEdit">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      <div if.bind="isEdit">
+        <button type="submit" class="btn btn-primary" click.delegate="UpdateStudent()">update</button>
+      </div>
+      <br />
+      <button type="reset" class="btn btn-primary">Reset</button>
+    </form>
+  </section>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>StidenID</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Remove</th>
+        <th>Edit details</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr repeat.for="std of loadservice.stuData">
+        <td>${std.stuId}</td>
+        <td>${std.name}</td>
+        <td>${std.department}</td>
+        <td><button type="submit" class="btn btn-danger" click.delegate="DeleteStudent(std)">Delete</button></td>
+        <td><button type="submit" class="btn btn-primary" click.delegate="EditStudent(std)">Edit</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <p>${studentData}</p>
+</template>

@@ -57,6 +57,13 @@ export class App {
         moduleId: PLATFORM.moduleName('./Listapi2'),
         nav: true,
         title: 'Listapi2'
+      },
+      {
+        route: 'LoadUsingService',
+        name: 'LoadUsingService',
+        moduleId: PLATFORM.moduleName('./LoadUsingService'),
+        nav: true,
+        title: 'LoadUsingService'
       }
 
       //{

@@ -1,7 +1,9 @@
 body {
   margin: 0;
 }
-
+.errorclass{
+    color:red;
+}
 .page-host {
   position: absolute;
   left: 0;

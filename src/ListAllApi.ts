@@ -6,7 +6,7 @@ import { inject, observable } from 'aurelia-framework';
 export class ListAllApi {
   public studentapi;
   httpClient: any;
-
+ 
   @observable()
   public studentData;
 
@@ -37,10 +37,9 @@ export class ListAllApi {
   //  this.getAll();
   //}
   DeleteStudent(std: any) {
-    debugger;
     var myuser = { stuid: std.stuId, name: std.name, department: std.department }
     console.log("deletedata", myuser);
-    this.studentapi.destroy('DeleteStu', {
+    this.studentapi.post('DeleteStu', {
       method: "DELETE",
       body: JSON.stringify(myuser)
     })
@@ -52,11 +51,9 @@ export class ListAllApi {
   }
 
   getAll() {
-    debugger;
     this.studentapi.find('All').then(response => {
       console.log("responsee get", response);
       this.studentData = response;
-      // alert(this.studentData[0].stuId);//
     })
   }
 }
